@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+<!-- 주의 : 답변레벨(들여쓰기용) re_level컬럼 추가해야함 -->
+  <select id="list" resultType="board.dto.BoardDTO">
+    select num,writer,username,reg_date,readcount
+      ,filename,filesize,down,re_level
+
+    from board
+    
+  </select>
+  
+  <!-- 게시물 저장  -->
+  <insert id="insert">
+    insert into board
+      (num,writer,username,passwd,ref,
+      re_step,re_level,job,ip,filename,filesize) 
+    values
+      ( (select nvl(max(num)+1,1) from board)
+        ,#{writer},#{username},#{passwd}
+        ,(select nvl(max(num)+1,1) from board)
+        ,1,0,#{job},#{ip},#{filename},#{filesize})
+  </insert>
+  
+  <select id="getFileName" resultType="String">
+    select filename
+    from board
+    where num=#{num}
+  </select>
+  
+  <update id="plusDown">
+    update board set down=down+1 where num=#{num}
+  </update>
+  
+  <!-- 게시물 상세 정보 -->
+  <select id="view" resultType="board.dto.BoardDTO">
+    select * from board
+    where num=#{num}
+  </select>
+
+  <!-- 조회수 증가 처리 -->  
+  <update id="plusReadCount">
+    update board set readcount=readcount+1 
+    where num=#{num}
+  </update>
+  
+  <!-- 댓글 목록 -->
+  <select id="commentList" resultType="board.dto.BoardCommentDTO">
+    select * from board_comment
+    where board_num=#{num}
+  </select>
+  
+
+  
+ 
+  
+ 
+  
+  <!-- 비밀번호 체크 -->
+  <select id="pass_check" resultType="String">
+     select passwd from board
+     where num=#{num} and passwd=#{passwd}
+  </select>
+  
+  <!-- 게시물 수정 -->
+  <update id="update">
+      update board
+      set writer=#{writer}, username=#{username}
+        , job=#{job}, filename=#{filename}
+        , filesize=#{filesize}, down=#{down}
+      where num=#{num}
+  </update>
+  
+  <!-- 삭제(진짜 삭제 ) -->
+  <update id="delete">
+      delete from board 
+      where num=#{num}
+  </update>
+  
+  <select id="searchList" resultType="board.dto.BoardDTO">
+  select num,writer,username,reg_date,readcount
+      ,filename,filesize,down,re_level
+      ,(select count(*) from board_comment 
+    where board_num=num) comment_count, show
+    from board
+    
+    select num , writer , username , reg_date, readcount, filename , filesize, down,re_level 
+from board 
+where writer like ? order by num; 
+    <choose>
+      <when test="search_option != 'all' ">
+        where ${search_option} like #{keyword}
+          and show='y'
+      </when>
+      <otherwise>
+        where ( writer like #{keyword}
+          or username like #{keyword}
+          or job like #{keyword} )
+          and show='y'
+      </otherwise>
+    </choose>
+
+  </select>
+
+</mapper>
