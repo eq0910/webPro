@@ -18,6 +18,7 @@ $(function(){
 
 </head>
 <body>
+<%@ include file="../include/menu.jsp" %>
 <h2>인사정보</h2><div class="text-right"style="color:fuchsia;">${sessionScope.userid}님이 접속중입니다.</div><br>
 <form name="form1" method="post"  
 action="${path}/board_servlet/search.do">
@@ -100,4 +101,5 @@ action="${path}/board_servlet/search.do">
  </c:forEach>
 </table>
 </body>
+<%@ include file="../include/footer.jsp" %>
 </html>

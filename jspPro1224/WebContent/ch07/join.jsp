@@ -30,33 +30,43 @@ $(function(){
 
 </head>
 <body>
-<h2 id="h21">인사정보시스템</h2>
-<h4>회원가입과 로그인</h4>
+    <%@ include file="../include/menu.jsp" %>
 
 
 
-<table border="1">
-  <tr>
-    <td>아이디</td>
-    <td><input name="userid"class = "form-control"id="userid"></td>
- </tr>
-  <tr>
-    <td>비밀번호</td>
-    <td><input type="password" name="passwd"class = "form-control" id="passwd"></td>
-  </tr>
-  <tr>
-    <td>이름</td>
-    <td><input class = "form-control" id="name"></td>
-  </tr>
-  <tr>
 
-    <td colspan="2" align="center">
-      <button id="btnJoin"  class="btn btn-danger">가입완료</button>
-<a href="../ch07/session_login.jsp"><button class="btn btn-info">로그인</button></a>
-      
-      
-    </td>
-  </tr>
-</table>
+<div class="container">
+    <div class="row">
+    	<div class="col-md-4 col-md-offset-4">
+    		<div class="panel panel-default">
+			  	<div class="panel-heading">
+			    	<h3 class="panel-title">인사정보프로그램 회원가입</h3>
+			 	</div>
+			  	<div class="panel-body">
+			    	
+                    <fieldset>
+			    	  	<div class="form-group">
+			    		    아이디:<input class="form-control" id=“userid“ placeholder="userid" name="userid" type="text">
+			    		</div>
+			    		<div class="form-group">
+			    			패스워드:<input class="form-control"  id=“passwd“ placeholder="Password" name="passwd" type="password" value="">
+			    		</div>
+이름:<input class="form-control"  id=“name”>
+			    		</div>
+			    	
+			    	  
+			    	<button id="btnJoin"  class="btn btn-lg btn-success btn-block">가입완료</button>
+			    	</fieldset>
+			      	
+                      <hr/>
+                    <center><h4>
+                    </h4></center>
+                   <a href="../ch07/session_login.jsp"><button class="btn btn-lg btn-danger btn-block">로그인</button></a>
+			    </div>
+			</div>
+		</div>
+	</div>
+</div>
 </body>
+<%@ include file="../include/footer.jsp" %>
 </html>

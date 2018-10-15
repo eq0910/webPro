@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link type="text/css" rel="stylesheet" href="boardCs.css">
@@ -19,8 +22,8 @@ $(function(){
 
 </head>
 <body>
-<h2 id="sub">인사정보</h2><div class="text-right"style="color:fuchsia;"
->${sessionScope.userid}님이 접속중입니다.</div><br>
+<%@ include file = "../include/menu.jsp" %>
+${sessionScope.userid}님이 접속중입니다.</div><br>
 <form name="form1" method="post"  
 action="${path}/board_servlet/search.do">
 <select name="search_option" >
@@ -73,4 +76,5 @@ action="${path}/board_servlet/search.do">
  </c:forEach>
 </table>
 </body>
+<%@ include file="../include/footer.jsp" %>
 </html>

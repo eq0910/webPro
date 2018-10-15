@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 <link type="text/css" rel="stylesheet" href="../board/boardCs.css">
 <%@ include file="../include/header.jsp" %>
+<%@ include file="../include/menu.jsp" %>
 <!-- JSTL -->
 <c:if test="${param.message == 'error' }">
   <script>
@@ -22,27 +23,38 @@
 
 </head>
 <body>
-<h2 id="h21">인사정보시스템</h2>
-<h4>로그인</h4>
-<form method="post" name="form1"
+
+<div class="container">
+    <div class="row">
+    	<div class="col-md-4 col-md-offset-4">
+    		<div class="panel panel-default">
+			  	<div class="panel-heading">
+			    	<h3 class="panel-title">인사정보프로그램 로그인</h3>
+			 	</div>
+			  	<div class="panel-body">
+			    	<form method="post" name="form1"
   action="${path}/session_servlet/login.do">
-<table border="1">
-  <tr>
-    <td>아이디</td>
-    <td><input name="userid"class = "form-control"></td>
- </tr>
-  <tr>
-    <td>비밀번호</td>
-    <td><input type="password" name="passwd"class = "form-control"></td>
-  </tr>
-  <tr>
-    <td colspan="2" align="center">
-      <input type="submit" class="btn btn-info" value="로그인">
-     <a href="../ch07/join.jsp"><button type="button" class="btn btn-danger" >회원가입</button></a>  
-      
-    </td>
-  </tr>
-</table>
-</form>
+                    <fieldset>
+			    	  	<div class="form-group">
+			    		    <input class="form-control" placeholder="userid" name="userid" type="text">
+			    		</div>
+			    		<div class="form-group">
+			    			<input class="form-control" placeholder="Password" name="passwd" type="password" value="">
+			    		</div>
+			    	
+			    	  
+			    	 <input type="submit" class="btn btn-lg btn-success btn-block"  value="로그인">
+			    	</fieldset>
+			      	</form>
+                      <hr/>
+                    <center><h4>
+                    </h4></center>
+                    <input class="btn btn-lg btn-facebook btn-block" type="submit" value="회원가입">
+			    </div>
+			</div>
+		</div>
+	</div>
+</div>
 </body>
+<%@ include file="../include/footer.jsp" %>
 </html>

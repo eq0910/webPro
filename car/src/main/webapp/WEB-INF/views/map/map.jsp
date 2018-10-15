@@ -45,7 +45,7 @@ address{
           <h5 class="card-title">오시는 길</h5>
           <hr>
           <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1581.3431691243202!2d127.0351241!3d37.5624531!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357cb06b15632557%3A0x8ae81404b43b67b9!2zKOyjvCnrr7jrnpjriqXroKXqsJzrsJzqtZDsnKHsm5A!5e0!3m2!1sko!2skr!4v1538445005350" width="100%" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
-          <a href="https://goo.gl/maps/3qA1nq2ab3N2"><address class="font-italic">미래카옥션</address></a>
+         <center> <a href="https://goo.gl/maps/3qA1nq2ab3N2"><address class="font-italic">미래카옥션</address></a></center>
         </div>
 
 

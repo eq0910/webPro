@@ -49,21 +49,19 @@ public class MemberController extends HttpServlet {
 			request.setAttribute("map", map);//key,value
 			//출력을 위해 포워딩할 uri지정
 			//String page="/ch06/member_list.jsp";
-			String page="/ch06/member_list2.jsp";
+			String page="/ch07/member_list.jsp";
 			RequestDispatcher rd=request.getRequestDispatcher(page);
 			rd.forward(request, response);//포워딩
 		}else if(uri.indexOf("join.do") != -1){//회원등록
 			String userid=request.getParameter("userid");
 			String passwd=request.getParameter("passwd");
 			String name=request.getParameter("name");
-			String email=request.getParameter("email");
-			String hp=request.getParameter("hp");
+	
 			MemberDTO dto=new MemberDTO();//MemberDTO 생성
 			dto.setUserid(userid);//dto의 setter를 통한 자료저장
 			dto.setPasswd(passwd);
 			dto.setName(name);
-			dto.setEmail(email);
-			dto.setHp(hp);
+	
 			dao.insert(dto);//dao의 insert()호출
 	
 	

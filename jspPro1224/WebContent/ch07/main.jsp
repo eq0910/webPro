@@ -24,7 +24,7 @@ $(function(){
 <body>
 
 
-<h2 id="h21">인사정보시스템</h2>
+<%@ include file="../include/menu.jsp" %>
 <div class="text-right" style="color:fuchsia;">${sessionScope.userid}님이 접속중입니다.</div>
 
 
@@ -37,4 +37,5 @@ $(function(){
 
 
 </body>
+<%@ include file="../include/footer.jsp" %>
 </html>
